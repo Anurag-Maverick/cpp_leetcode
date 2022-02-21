@@ -1,0 +1,39 @@
+vector<int> sortEvenOdd(vector<int>& nums) {
+        
+        int i;
+        int l = nums.size();
+        vector<int> ev;
+        vector<int> od;
+        
+        for(i=0;i<l;i++)
+        {
+            if(i%2==1)
+            {
+                od.push_back(nums[i]);
+            }
+            else
+            {
+                ev.push_back(nums[i]);
+            }
+        }
+        
+        sort(od.begin(),od.end(), greater<int>());
+        sort(ev.begin(), ev.end());
+        
+        int kodd=0, keven=0;
+        for(i=0;i<l;i++)
+        {
+            if(i%2==1)
+            {
+                nums[i] = od[kodd];
+                kodd++;
+            }
+            else
+            {
+                nums[i] = ev[keven];
+                keven++;
+            }
+        }
+        
+        return nums;
+        
